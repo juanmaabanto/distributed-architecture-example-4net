@@ -1,0 +1,1208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CatSolution.Infrastructure.MainModule.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="WorkSpaceId" Type="int" />
+        </EntityType>
+        <EntityType Name="SYS_Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleId" Type="tinyint" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tooltip" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Author" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="HostName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="HostUri" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="PathName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PathUri" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Icon" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_Authorization">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="OptionId" Type="smallint" Nullable="false" />
+          <Property Name="CompanyId" Type="tinyint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRegistration" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserModification" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SYS_Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkSpaceId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AlternateCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Canceled" Type="bit" Nullable="false" />
+          <Property Name="UserRegistration" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_DetailAuthorization">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="DetailOptionId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="OptionId" Type="smallint" Nullable="false" />
+          <Property Name="CompanyId" Type="tinyint" Nullable="false" />
+          <Property Name="DetailOptionId" Type="smallint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="UserRegistration" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserModification" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SYS_DetailOption">
+          <Key>
+            <PropertyRef Name="DetailOptionId" />
+          </Key>
+          <Property Name="DetailOptionId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionId" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActionName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_DetailWorkSpace">
+          <Key>
+            <PropertyRef Name="DetailWorkSpaceId" />
+          </Key>
+          <Property Name="DetailWorkSpaceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkSpaceId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="tinyint" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_Module">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Tooltip" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Icon" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_Option">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationId" Type="tinyint" Nullable="false" />
+          <Property Name="ParentId" Type="smallint" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tooltip" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sequence" Type="tinyint" Nullable="false" />
+          <Property Name="ViewClass" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ViewType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Icon" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Leaf" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_UserCompany">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CompanyId" Type="tinyint" Nullable="false" />
+          <Property Name="Principal" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_WorkSpace">
+          <Key>
+            <PropertyRef Name="WorkSpaceId" />
+          </Key>
+          <Property Name="WorkSpaceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkSpaceTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Domain" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MonthsTest" Type="tinyint" Nullable="false" />
+          <Property Name="MaxUsers" Type="smallint" Nullable="false" />
+          <Property Name="PricePerUser" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="MaxCompanies" Type="tinyint" Nullable="false" />
+          <Property Name="PricePerCompany" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Contact" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYS_WorkSpaceType">
+          <Key>
+            <PropertyRef Name="WorkSpaceTypeId" />
+          </Key>
+          <Property Name="WorkSpaceTypeId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AspNetUsers_SYS_WorkSpace">
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="WorkSpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Application_SYS_Module">
+          <End Role="SYS_Module" Type="Self.SYS_Module" Multiplicity="1" />
+          <End Role="SYS_Application" Type="Self.SYS_Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Module">
+              <PropertyRef Name="ModuleId" />
+            </Principal>
+            <Dependent Role="SYS_Application">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Authorization_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SYS_Authorization">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Authorization_SYS_Company">
+          <End Role="SYS_Company" Type="Self.SYS_Company" Multiplicity="1" />
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="SYS_Authorization">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Authorization_SYS_Option">
+          <End Role="SYS_Option" Type="Self.SYS_Option" Multiplicity="1" />
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Option">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="SYS_Authorization">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Company_SYS_WorkSpace">
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="1" />
+          <End Role="SYS_Company" Type="Self.SYS_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Principal>
+            <Dependent Role="SYS_Company">
+              <PropertyRef Name="WorkSpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailAuthorization_SYS_Authorization">
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="1" />
+          <End Role="SYS_DetailAuthorization" Type="Self.SYS_DetailAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Authorization">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="OptionId" />
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="SYS_DetailAuthorization">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="OptionId" />
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailOption_SYS_Option">
+          <End Role="SYS_Option" Type="Self.SYS_Option" Multiplicity="1" />
+          <End Role="SYS_DetailOption" Type="Self.SYS_DetailOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Option">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="SYS_DetailOption">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailWorkSpace_SYS_Application">
+          <End Role="SYS_Application" Type="Self.SYS_Application" Multiplicity="1" />
+          <End Role="SYS_DetailWorkSpace" Type="Self.SYS_DetailWorkSpace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Application">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="SYS_DetailWorkSpace">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailWorkSpace_SYS_WorkSpace">
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="1" />
+          <End Role="SYS_DetailWorkSpace" Type="Self.SYS_DetailWorkSpace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Principal>
+            <Dependent Role="SYS_DetailWorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Option_SYS_Application">
+          <End Role="SYS_Application" Type="Self.SYS_Application" Multiplicity="1" />
+          <End Role="SYS_Option" Type="Self.SYS_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Application">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="SYS_Option">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Option_SYS_Option">
+          <End Role="SYS_Option" Type="Self.SYS_Option" Multiplicity="0..1" />
+          <End Role="SYS_Option1" Type="Self.SYS_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Option">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="SYS_Option1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_UserCompany_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="SYS_UserCompany" Type="Self.SYS_UserCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SYS_UserCompany">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_UserCompany_SYS_Company">
+          <End Role="SYS_Company" Type="Self.SYS_Company" Multiplicity="1" />
+          <End Role="SYS_UserCompany" Type="Self.SYS_UserCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="SYS_UserCompany">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_WorkSpace_SYS_WorkSpaceType">
+          <End Role="SYS_WorkSpaceType" Type="Self.SYS_WorkSpaceType" Multiplicity="1" />
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpaceType">
+              <PropertyRef Name="WorkSpaceTypeId" />
+            </Principal>
+            <Dependent Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CatSolutionInfrastructureMainModuleModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_Application" EntityType="Self.SYS_Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_Authorization" EntityType="Self.SYS_Authorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_Company" EntityType="Self.SYS_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_DetailAuthorization" EntityType="Self.SYS_DetailAuthorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_DetailOption" EntityType="Self.SYS_DetailOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_DetailWorkSpace" EntityType="Self.SYS_DetailWorkSpace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_Module" EntityType="Self.SYS_Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_Option" EntityType="Self.SYS_Option" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_UserCompany" EntityType="Self.SYS_UserCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_WorkSpace" EntityType="Self.SYS_WorkSpace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYS_WorkSpaceType" EntityType="Self.SYS_WorkSpaceType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AspNetUsers_SYS_WorkSpace" Association="Self.FK_AspNetUsers_SYS_WorkSpace">
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Application_SYS_Module" Association="Self.FK_SYS_Application_SYS_Module">
+            <End Role="SYS_Module" EntitySet="SYS_Module" />
+            <End Role="SYS_Application" EntitySet="SYS_Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Authorization_AspNetUsers" Association="Self.FK_SYS_Authorization_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Authorization_SYS_Company" Association="Self.FK_SYS_Authorization_SYS_Company">
+            <End Role="SYS_Company" EntitySet="SYS_Company" />
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Authorization_SYS_Option" Association="Self.FK_SYS_Authorization_SYS_Option">
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Company_SYS_WorkSpace" Association="Self.FK_SYS_Company_SYS_WorkSpace">
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+            <End Role="SYS_Company" EntitySet="SYS_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailAuthorization_SYS_Authorization" Association="Self.FK_SYS_DetailAuthorization_SYS_Authorization">
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+            <End Role="SYS_DetailAuthorization" EntitySet="SYS_DetailAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailOption_SYS_Option" Association="Self.FK_SYS_DetailOption_SYS_Option">
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+            <End Role="SYS_DetailOption" EntitySet="SYS_DetailOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailWorkSpace_SYS_Application" Association="Self.FK_SYS_DetailWorkSpace_SYS_Application">
+            <End Role="SYS_Application" EntitySet="SYS_Application" />
+            <End Role="SYS_DetailWorkSpace" EntitySet="SYS_DetailWorkSpace" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailWorkSpace_SYS_WorkSpace" Association="Self.FK_SYS_DetailWorkSpace_SYS_WorkSpace">
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+            <End Role="SYS_DetailWorkSpace" EntitySet="SYS_DetailWorkSpace" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Option_SYS_Application" Association="Self.FK_SYS_Option_SYS_Application">
+            <End Role="SYS_Application" EntitySet="SYS_Application" />
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Option_SYS_Option" Association="Self.FK_SYS_Option_SYS_Option">
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+            <End Role="SYS_Option1" EntitySet="SYS_Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_UserCompany_AspNetUsers" Association="Self.FK_SYS_UserCompany_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="SYS_UserCompany" EntitySet="SYS_UserCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_UserCompany_SYS_Company" Association="Self.FK_SYS_UserCompany_SYS_Company">
+            <End Role="SYS_Company" EntitySet="SYS_Company" />
+            <End Role="SYS_UserCompany" EntitySet="SYS_UserCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_WorkSpace_SYS_WorkSpaceType" Association="Self.FK_SYS_WorkSpace_SYS_WorkSpaceType">
+            <End Role="SYS_WorkSpaceType" EntitySet="SYS_WorkSpaceType" />
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CatSolution.Infrastructure.MainModule.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkSpaceId" Type="Int32" />
+          <NavigationProperty Name="SYS_WorkSpace" Relationship="Self.FK_AspNetUsers_SYS_WorkSpace" FromRole="AspNetUsers" ToRole="SYS_WorkSpace" />
+          <NavigationProperty Name="SYS_Authorization" Relationship="Self.FK_SYS_Authorization_AspNetUsers" FromRole="AspNetUsers" ToRole="SYS_Authorization" />
+          <NavigationProperty Name="SYS_UserCompany" Relationship="Self.FK_SYS_UserCompany_AspNetUsers" FromRole="AspNetUsers" ToRole="SYS_UserCompany" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="SYS_Authorization">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OptionId" Type="Int16" Nullable="false" />
+          <Property Name="CompanyId" Type="Byte" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserModification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_SYS_Authorization_AspNetUsers" FromRole="SYS_Authorization" ToRole="AspNetUsers" />
+          <NavigationProperty Name="SYS_Company" Relationship="Self.FK_SYS_Authorization_SYS_Company" FromRole="SYS_Authorization" ToRole="SYS_Company" />
+          <NavigationProperty Name="SYS_Option" Relationship="Self.FK_SYS_Authorization_SYS_Option" FromRole="SYS_Authorization" ToRole="SYS_Option" />
+          <NavigationProperty Name="SYS_DetailAuthorization" Relationship="Self.FK_SYS_DetailAuthorization_SYS_Authorization" FromRole="SYS_Authorization" ToRole="SYS_DetailAuthorization" />
+        </EntityType>
+        <EntityType Name="SYS_Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkSpaceId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BusinessName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AlternateCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Canceled" Type="Boolean" Nullable="false" />
+          <Property Name="UserRegistration" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SYS_Authorization" Relationship="Self.FK_SYS_Authorization_SYS_Company" FromRole="SYS_Company" ToRole="SYS_Authorization" />
+          <NavigationProperty Name="SYS_WorkSpace" Relationship="Self.FK_SYS_Company_SYS_WorkSpace" FromRole="SYS_Company" ToRole="SYS_WorkSpace" />
+          <NavigationProperty Name="SYS_UserCompany" Relationship="Self.FK_SYS_UserCompany_SYS_Company" FromRole="SYS_Company" ToRole="SYS_UserCompany" />
+        </EntityType>
+        <EntityType Name="SYS_DetailAuthorization">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="DetailOptionId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OptionId" Type="Int16" Nullable="false" />
+          <Property Name="CompanyId" Type="Byte" Nullable="false" />
+          <Property Name="DetailOptionId" Type="Int16" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserModification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SYS_Authorization" Relationship="Self.FK_SYS_DetailAuthorization_SYS_Authorization" FromRole="SYS_DetailAuthorization" ToRole="SYS_Authorization" />
+        </EntityType>
+        <EntityType Name="SYS_DetailOption">
+          <Key>
+            <PropertyRef Name="DetailOptionId" />
+          </Key>
+          <Property Name="DetailOptionId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionId" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ControllerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ActionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SYS_Option" Relationship="Self.FK_SYS_DetailOption_SYS_Option" FromRole="SYS_DetailOption" ToRole="SYS_Option" />
+        </EntityType>
+        <EntityType Name="SYS_DetailWorkSpace">
+          <Key>
+            <PropertyRef Name="DetailWorkSpaceId" />
+          </Key>
+          <Property Name="DetailWorkSpaceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkSpaceId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Byte" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SYS_WorkSpace" Relationship="Self.FK_SYS_DetailWorkSpace_SYS_WorkSpace" FromRole="SYS_DetailWorkSpace" ToRole="SYS_WorkSpace" />
+          <NavigationProperty Name="SYS_Application" Relationship="CatSolution.Infrastructure.MainModule.Model.FK_SYS_DetailWorkSpace_SYS_Application" FromRole="SYS_DetailWorkSpace" ToRole="SYS_Application" />
+        </EntityType>
+        <EntityType Name="SYS_Option">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationId" Type="Byte" Nullable="false" />
+          <Property Name="ParentId" Type="Int16" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tooltip" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sequence" Type="Byte" Nullable="false" />
+          <Property Name="ViewClass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ViewType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Icon" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Leaf" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SYS_Authorization" Relationship="Self.FK_SYS_Authorization_SYS_Option" FromRole="SYS_Option" ToRole="SYS_Authorization" />
+          <NavigationProperty Name="SYS_DetailOption" Relationship="Self.FK_SYS_DetailOption_SYS_Option" FromRole="SYS_Option" ToRole="SYS_DetailOption" />
+          <NavigationProperty Name="SYS_Option1" Relationship="Self.FK_SYS_Option_SYS_Option" FromRole="SYS_Option" ToRole="SYS_Option1" />
+          <NavigationProperty Name="SYS_Option2" Relationship="Self.FK_SYS_Option_SYS_Option" FromRole="SYS_Option1" ToRole="SYS_Option" />
+          <NavigationProperty Name="SYS_Application" Relationship="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Option_SYS_Application" FromRole="SYS_Option" ToRole="SYS_Application" />
+        </EntityType>
+        <EntityType Name="SYS_UserCompany">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyId" Type="Byte" Nullable="false" />
+          <Property Name="Principal" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_SYS_UserCompany_AspNetUsers" FromRole="SYS_UserCompany" ToRole="AspNetUsers" />
+          <NavigationProperty Name="SYS_Company" Relationship="Self.FK_SYS_UserCompany_SYS_Company" FromRole="SYS_UserCompany" ToRole="SYS_Company" />
+        </EntityType>
+        <EntityType Name="SYS_WorkSpace">
+          <Key>
+            <PropertyRef Name="WorkSpaceId" />
+          </Key>
+          <Property Name="WorkSpaceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkSpaceTypeId" Type="Byte" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MonthsTest" Type="Byte" Nullable="false" />
+          <Property Name="MaxUsers" Type="Int16" Nullable="false" />
+          <Property Name="PricePerUser" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="MaxCompanies" Type="Byte" Nullable="false" />
+          <Property Name="PricePerCompany" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_SYS_WorkSpace" FromRole="SYS_WorkSpace" ToRole="AspNetUsers" />
+          <NavigationProperty Name="SYS_Company" Relationship="Self.FK_SYS_Company_SYS_WorkSpace" FromRole="SYS_WorkSpace" ToRole="SYS_Company" />
+          <NavigationProperty Name="SYS_DetailWorkSpace" Relationship="Self.FK_SYS_DetailWorkSpace_SYS_WorkSpace" FromRole="SYS_WorkSpace" ToRole="SYS_DetailWorkSpace" />
+          <NavigationProperty Name="SYS_WorkSpaceType" Relationship="Self.FK_SYS_WorkSpace_SYS_WorkSpaceType" FromRole="SYS_WorkSpace" ToRole="SYS_WorkSpaceType" />
+        </EntityType>
+        <EntityType Name="SYS_WorkSpaceType">
+          <Key>
+            <PropertyRef Name="WorkSpaceTypeId" />
+          </Key>
+          <Property Name="WorkSpaceTypeId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SYS_WorkSpace" Relationship="Self.FK_SYS_WorkSpace_SYS_WorkSpaceType" FromRole="SYS_WorkSpaceType" ToRole="SYS_WorkSpace" />
+        </EntityType>
+        <Association Name="FK_AspNetUsers_SYS_WorkSpace">
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="WorkSpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Authorization_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SYS_Authorization">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_UserCompany_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="SYS_UserCompany" Type="Self.SYS_UserCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SYS_UserCompany">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Authorization_SYS_Company">
+          <End Role="SYS_Company" Type="Self.SYS_Company" Multiplicity="1" />
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="SYS_Authorization">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Authorization_SYS_Option">
+          <End Role="SYS_Option" Type="Self.SYS_Option" Multiplicity="1" />
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Option">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="SYS_Authorization">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailAuthorization_SYS_Authorization">
+          <End Role="SYS_Authorization" Type="Self.SYS_Authorization" Multiplicity="1" />
+          <End Role="SYS_DetailAuthorization" Type="Self.SYS_DetailAuthorization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Authorization">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="OptionId" />
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="SYS_DetailAuthorization">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="OptionId" />
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Company_SYS_WorkSpace">
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="1" />
+          <End Role="SYS_Company" Type="Self.SYS_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Principal>
+            <Dependent Role="SYS_Company">
+              <PropertyRef Name="WorkSpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_UserCompany_SYS_Company">
+          <End Role="SYS_Company" Type="Self.SYS_Company" Multiplicity="1" />
+          <End Role="SYS_UserCompany" Type="Self.SYS_UserCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="SYS_UserCompany">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailOption_SYS_Option">
+          <End Role="SYS_Option" Type="Self.SYS_Option" Multiplicity="1" />
+          <End Role="SYS_DetailOption" Type="Self.SYS_DetailOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Option">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="SYS_DetailOption">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailWorkSpace_SYS_WorkSpace">
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="1" />
+          <End Role="SYS_DetailWorkSpace" Type="Self.SYS_DetailWorkSpace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Principal>
+            <Dependent Role="SYS_DetailWorkSpace">
+              <PropertyRef Name="WorkSpaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Option_SYS_Option">
+          <End Role="SYS_Option" Type="Self.SYS_Option" Multiplicity="0..1" />
+          <End Role="SYS_Option1" Type="Self.SYS_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Option">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="SYS_Option1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_WorkSpace_SYS_WorkSpaceType">
+          <End Role="SYS_WorkSpaceType" Type="Self.SYS_WorkSpaceType" Multiplicity="1" />
+          <End Role="SYS_WorkSpace" Type="Self.SYS_WorkSpace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_WorkSpaceType">
+              <PropertyRef Name="WorkSpaceTypeId" />
+            </Principal>
+            <Dependent Role="SYS_WorkSpace">
+              <PropertyRef Name="WorkSpaceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MainContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="SYS_Authorization" EntityType="Self.SYS_Authorization" />
+          <EntitySet Name="SYS_Company" EntityType="Self.SYS_Company" />
+          <EntitySet Name="SYS_DetailAuthorization" EntityType="Self.SYS_DetailAuthorization" />
+          <EntitySet Name="SYS_DetailOption" EntityType="Self.SYS_DetailOption" />
+          <EntitySet Name="SYS_DetailWorkSpace" EntityType="Self.SYS_DetailWorkSpace" />
+          <EntitySet Name="SYS_Option" EntityType="Self.SYS_Option" />
+          <EntitySet Name="SYS_UserCompany" EntityType="Self.SYS_UserCompany" />
+          <EntitySet Name="SYS_WorkSpace" EntityType="Self.SYS_WorkSpace" />
+          <EntitySet Name="SYS_WorkSpaceType" EntityType="Self.SYS_WorkSpaceType" />
+          <AssociationSet Name="FK_AspNetUsers_SYS_WorkSpace" Association="Self.FK_AspNetUsers_SYS_WorkSpace">
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Authorization_AspNetUsers" Association="Self.FK_SYS_Authorization_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_UserCompany_AspNetUsers" Association="Self.FK_SYS_UserCompany_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="SYS_UserCompany" EntitySet="SYS_UserCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Authorization_SYS_Company" Association="Self.FK_SYS_Authorization_SYS_Company">
+            <End Role="SYS_Company" EntitySet="SYS_Company" />
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Authorization_SYS_Option" Association="Self.FK_SYS_Authorization_SYS_Option">
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailAuthorization_SYS_Authorization" Association="Self.FK_SYS_DetailAuthorization_SYS_Authorization">
+            <End Role="SYS_Authorization" EntitySet="SYS_Authorization" />
+            <End Role="SYS_DetailAuthorization" EntitySet="SYS_DetailAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Company_SYS_WorkSpace" Association="Self.FK_SYS_Company_SYS_WorkSpace">
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+            <End Role="SYS_Company" EntitySet="SYS_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_UserCompany_SYS_Company" Association="Self.FK_SYS_UserCompany_SYS_Company">
+            <End Role="SYS_Company" EntitySet="SYS_Company" />
+            <End Role="SYS_UserCompany" EntitySet="SYS_UserCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailOption_SYS_Option" Association="Self.FK_SYS_DetailOption_SYS_Option">
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+            <End Role="SYS_DetailOption" EntitySet="SYS_DetailOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailWorkSpace_SYS_WorkSpace" Association="Self.FK_SYS_DetailWorkSpace_SYS_WorkSpace">
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+            <End Role="SYS_DetailWorkSpace" EntitySet="SYS_DetailWorkSpace" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Option_SYS_Option" Association="Self.FK_SYS_Option_SYS_Option">
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+            <End Role="SYS_Option1" EntitySet="SYS_Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_WorkSpace_SYS_WorkSpaceType" Association="Self.FK_SYS_WorkSpace_SYS_WorkSpaceType">
+            <End Role="SYS_WorkSpaceType" EntitySet="SYS_WorkSpaceType" />
+            <End Role="SYS_WorkSpace" EntitySet="SYS_WorkSpace" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="SYS_Application" EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_Application" />
+          <EntitySet Name="SYS_Module" EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_Module" />
+          <AssociationSet Name="FK_SYS_Application_SYS_Module" Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Application_SYS_Module">
+            <End Role="SYS_Module" EntitySet="SYS_Module" />
+            <End Role="SYS_Application" EntitySet="SYS_Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_DetailWorkSpace_SYS_Application" Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_DetailWorkSpace_SYS_Application">
+            <End Role="SYS_Application" EntitySet="SYS_Application" />
+            <End Role="SYS_DetailWorkSpace" EntitySet="SYS_DetailWorkSpace" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SYS_Option_SYS_Application" Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Option_SYS_Application">
+            <End Role="SYS_Application" EntitySet="SYS_Application" />
+            <End Role="SYS_Option" EntitySet="SYS_Option" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SYS_Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleId" Type="Byte" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tooltip" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="HostName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HostUri" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PathName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PathUri" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SYS_Module" Relationship="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Application_SYS_Module" FromRole="SYS_Application" ToRole="SYS_Module" />
+          <NavigationProperty Name="SYS_DetailWorkSpace" Relationship="CatSolution.Infrastructure.MainModule.Model.FK_SYS_DetailWorkSpace_SYS_Application" FromRole="SYS_Application" ToRole="SYS_DetailWorkSpace" />
+          <NavigationProperty Name="SYS_Option" Relationship="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Option_SYS_Application" FromRole="SYS_Application" ToRole="SYS_Option" />
+        </EntityType>
+        <EntityType Name="SYS_Module">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Tooltip" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Icon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SYS_Application" Relationship="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Application_SYS_Module" FromRole="SYS_Module" ToRole="SYS_Application" />
+        </EntityType>
+        <Association Name="FK_SYS_Application_SYS_Module">
+          <End Type="CatSolution.Infrastructure.MainModule.Model.SYS_Module" Role="SYS_Module" Multiplicity="1" />
+          <End Type="CatSolution.Infrastructure.MainModule.Model.SYS_Application" Role="SYS_Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Module">
+              <PropertyRef Name="ModuleId" />
+            </Principal>
+            <Dependent Role="SYS_Application">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_DetailWorkSpace_SYS_Application">
+          <End Type="CatSolution.Infrastructure.MainModule.Model.SYS_Application" Role="SYS_Application" Multiplicity="1" />
+          <End Type="CatSolution.Infrastructure.MainModule.Model.SYS_DetailWorkSpace" Role="SYS_DetailWorkSpace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Application">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="SYS_DetailWorkSpace">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SYS_Option_SYS_Application">
+          <End Type="CatSolution.Infrastructure.MainModule.Model.SYS_Application" Role="SYS_Application" Multiplicity="1" />
+          <End Type="CatSolution.Infrastructure.MainModule.Model.SYS_Option" Role="SYS_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYS_Application">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="SYS_Option">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CatSolutionInfrastructureMainModuleModelStoreContainer" CdmEntityContainer="MainContext">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="WorkSpaceId" ColumnName="WorkSpaceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_Authorization">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_Authorization">
+              <MappingFragment StoreEntitySet="SYS_Authorization">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="UserRegistration" ColumnName="UserRegistration" />
+                <ScalarProperty Name="UserModification" ColumnName="UserModification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_Company">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_Company">
+              <MappingFragment StoreEntitySet="SYS_Company">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="WorkSpaceId" ColumnName="WorkSpaceId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="AlternateCode" ColumnName="AlternateCode" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+                <ScalarProperty Name="UserRegistration" ColumnName="UserRegistration" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_DetailAuthorization">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_DetailAuthorization">
+              <MappingFragment StoreEntitySet="SYS_DetailAuthorization">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DetailOptionId" ColumnName="DetailOptionId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="UserRegistration" ColumnName="UserRegistration" />
+                <ScalarProperty Name="UserModification" ColumnName="UserModification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_DetailOption">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_DetailOption">
+              <MappingFragment StoreEntitySet="SYS_DetailOption">
+                <ScalarProperty Name="DetailOptionId" ColumnName="DetailOptionId" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_DetailWorkSpace">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_DetailWorkSpace">
+              <MappingFragment StoreEntitySet="SYS_DetailWorkSpace">
+                <ScalarProperty Name="DetailWorkSpaceId" ColumnName="DetailWorkSpaceId" />
+                <ScalarProperty Name="WorkSpaceId" ColumnName="WorkSpaceId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_Option">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_Option">
+              <MappingFragment StoreEntitySet="SYS_Option">
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tooltip" ColumnName="Tooltip" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="ViewClass" ColumnName="ViewClass" />
+                <ScalarProperty Name="ViewType" ColumnName="ViewType" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Leaf" ColumnName="Leaf" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_UserCompany">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_UserCompany">
+              <MappingFragment StoreEntitySet="SYS_UserCompany">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Principal" ColumnName="Principal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_WorkSpace">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_WorkSpace">
+              <MappingFragment StoreEntitySet="SYS_WorkSpace">
+                <ScalarProperty Name="WorkSpaceId" ColumnName="WorkSpaceId" />
+                <ScalarProperty Name="WorkSpaceTypeId" ColumnName="WorkSpaceTypeId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="MonthsTest" ColumnName="MonthsTest" />
+                <ScalarProperty Name="MaxUsers" ColumnName="MaxUsers" />
+                <ScalarProperty Name="PricePerUser" ColumnName="PricePerUser" />
+                <ScalarProperty Name="MaxCompanies" ColumnName="MaxCompanies" />
+                <ScalarProperty Name="PricePerCompany" ColumnName="PricePerCompany" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_WorkSpaceType">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_WorkSpaceType">
+              <MappingFragment StoreEntitySet="SYS_WorkSpaceType">
+                <ScalarProperty Name="WorkSpaceTypeId" ColumnName="WorkSpaceTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="CatSolution.Infrastructure.MainModule.Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="SYS_Application">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_Application">
+              <MappingFragment StoreEntitySet="SYS_Application">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="PathUri" ColumnName="PathUri" />
+                <ScalarProperty Name="PathName" ColumnName="PathName" />
+                <ScalarProperty Name="HostUri" ColumnName="HostUri" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Tooltip" ColumnName="Tooltip" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYS_Module">
+            <EntityTypeMapping TypeName="CatSolution.Infrastructure.MainModule.Model.SYS_Module">
+              <MappingFragment StoreEntitySet="SYS_Module">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Tooltip" ColumnName="Tooltip" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

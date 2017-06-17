@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="53a04094b6f34d2789bc38fb827003d0" Name="Diagram1">
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.AspNetRole" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.AspNetUser" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_Authorization" Width="1.5" PointX="7.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_Company" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_DetailAuthorization" Width="1.5" PointX="9.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_DetailOption" Width="1.5" PointX="7.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_DetailWorkSpace" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_Option" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_UserCompany" Width="1.5" PointX="7.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_WorkSpace" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_WorkSpaceType" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_AspNetUsers_SYS_WorkSpace" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Authorization_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_UserCompany_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Authorization_SYS_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Authorization_SYS_Option" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_DetailAuthorization_SYS_Authorization" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Company_SYS_WorkSpace" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_UserCompany_SYS_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_DetailOption_SYS_Option" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_DetailWorkSpace_SYS_WorkSpace" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Option_SYS_Option" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_WorkSpace_SYS_WorkSpaceType" ManuallyRouted="false" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_Application" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CatSolution.Infrastructure.MainModule.Model.SYS_Module" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Application_SYS_Module" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_DetailWorkSpace_SYS_Application" />
+        <AssociationConnector Association="CatSolution.Infrastructure.MainModule.Model.FK_SYS_Option_SYS_Application" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
